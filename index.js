@@ -5,6 +5,8 @@ import cors from 'cors';
 import tanamanRoutes from './routes/tanamanRoutes.js';
 import informasiRoutes from './routes/informasiRoutes.js';
 import penangananRoutes from './routes/penangananRoutes.js';
+import userRoutes from './routes/userRoutes.js'
+import koleksiRoutes from './routes/koleksiRoutes.js'
 import { testConnection } from './database/db.js';
 
 dotenv.config();
@@ -22,6 +24,8 @@ app.use('/uploads', express.static('uploads'));
 app.use('/tanaman', tanamanRoutes);
 app.use('/informasi', informasiRoutes);
 app.use('/penanganan', penangananRoutes);
+app.use('/user', userRoutes);
+app.use('/koleksi', koleksiRoutes);
 
 // Test database connection
 testConnection();
