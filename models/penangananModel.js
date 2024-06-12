@@ -15,7 +15,7 @@ const getPenangananById = async (id_penanganan) => {
 // Mendapatkan informasi penanganan berdasarkan nama_penyakit
 const getPenangananByNamaPenyakit = async (nama_penyakit) => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT * FROM penanganan WHERE nama_penyakit = ?', [nama_penyakit], (err, results) => {
+        db.query('SELECT id_penanganan, nama_penyakit, penanganan FROM penanganan WHERE nama_penyakit = ?', [nama_penyakit], (err, results) => {
             if (err) {
                 return reject(err);
             }
@@ -27,7 +27,7 @@ const getPenangananByNamaPenyakit = async (nama_penyakit) => {
 // Mendapatkan informasi penanganan berdasarkan nama_hama
 const getPenangananByNamaHama = async (nama_hama) => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT * FROM penanganan WHERE nama_hama = ?', [nama_hama], (err, results) => {
+        db.query('SELECT id_penanganan, nama_hama, penanganan FROM penanganan WHERE nama_hama = ?', [nama_hama], (err, results) => {
             if (err) {
                 return reject(err);
             }

@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import tanamanRoutes from './routes/tanamanRoutes.js';
+import InfotanamanRoutes from './routes/InfotanamanRoutes.js';
 import informasiRoutes from './routes/informasiRoutes.js';
 import penangananRoutes from './routes/penangananRoutes.js';
 import userRoutes from './routes/userRoutes.js'
@@ -22,6 +23,7 @@ app.use('/uploads', express.static('uploads'));
 
 // Use routes
 app.use('/tanaman', tanamanRoutes);
+app.use('/Infotanaman', InfotanamanRoutes);
 app.use('/informasi', informasiRoutes);
 app.use('/penanganan', penangananRoutes);
 app.use('/user', userRoutes);
