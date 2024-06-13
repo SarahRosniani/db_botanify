@@ -24,6 +24,17 @@ const getInformasiByKategori = (kategori) => {
   });
 };
 
+const getInformasiById = async (id_informasi) => {
+  return new Promise((resolve, reject) => {
+      db.query('SELECT * FROM informasi WHERE id_informasi = ?', [id_informasi], (err, results) => {
+          if (err) {
+              return reject(err);
+          }
+          resolve(results);
+      });
+  });
+};
+
 const addInformasi = (judul, isi_artikel, kategori, penerbit, foto_informasi, tanggal, url) => {
   return new Promise((resolve, reject) => {
     db.query('INSERT INTO informasi (judul, isi_artikel, kategori, penerbit, foto_informasi, tanggal, url) VALUES (?, ?, ?, ?, ?, ?, ?)', 
@@ -63,4 +74,4 @@ const deleteInformasi = (id_informasi) => {
   });
 };
 
-export { getAllInformasi, getInformasiByKategori, addInformasi, updateInformasi, deleteInformasi };
+export { getAllInformasi, getInformasiByKategori, getInformasiById, addInformasi, updateInformasi, deleteInformasi };

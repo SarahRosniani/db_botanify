@@ -1,4 +1,4 @@
-import { getAllInformasi as modelGetAllInformasi, getInformasiByKategori, addInformasi, updateInformasi, deleteInformasi } from '../models/informasiModel.js';
+import { getAllInformasi as modelGetAllInformasi, getInformasiByKategori, getInformasiById, addInformasi, updateInformasi, deleteInformasi } from '../models/informasiModel.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -29,6 +29,20 @@ const getInformasiByKategoriHandler = async (req, res) => {
         }
     } catch (err) {
         res.status(500).send(err);
+    }
+};
+
+const getInformasiByIdHandler = async (req, res) => {
+    const { id_informasi } = req.params;
+    try {
+        const result = await getInformasiById(id_informasi);
+        if (result.length === 0) {
+            return res.status(404).json({ message: "Informasi tidak ditemukan" });
+        }
+        return res.status(200).json({ data: result[0] });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Terjadi kesalahan saat mengambil informasi" });
     }
 };
 
@@ -69,4 +83,4 @@ const deleteInformasiHandler = async (req, res) => {
     }
 };
 
-export { getAllInformasi, getInformasiByKategoriHandler as getInformasiByKategori, addInformasiHandler as addInformasi, updateInformasiHandler as updateInformasi, deleteInformasiHandler as deleteInformasi };
+export { getAllInformasi, getInformasiByKategoriHandler as getInformasiByKategori, getInformasiByIdHandler as getInformasiById, addInformasiHandler as addInformasi, updateInformasiHandler as updateInformasi, deleteInformasiHandler as deleteInformasi };
