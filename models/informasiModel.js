@@ -1,4 +1,6 @@
+
 import db from '../database/db.js';
+
 
 const getAllInformasi = () => {
   return new Promise((resolve, reject) => {
